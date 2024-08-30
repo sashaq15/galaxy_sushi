@@ -1,0 +1,115 @@
+.root {
+    .header {
+        padding: 0px 0;
+        background-color: #fff;
+        border-radius: 30px;
+      }
+      
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+      
+      .header__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .header__logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        max-width: 350px;
+      
+        &__descr {
+          display: block;
+          padding-left: 20px;
+          width: 200%;
+      
+          &__title {
+            font-size: 25px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            font-weight: 800;
+          }
+      
+          &__text {
+            margin-top: 0px;
+            font-size: 14px;
+            opacity: 0.7; 
+          }
+        }
+      }
+      
+      .header__search {
+        display: flex;
+        position: relative;
+        width: 360px;
+        list-style: none;
+       
+        input {
+          width: 360px;
+          height: 36px;
+          opacity: 0.7;
+          padding-left: 40px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          font-size: 14px;
+          outline: none;
+          transition: border-color 0.5s ease;
+        }
+        input:focus {
+          border: 1px solid rgba(0, 0, 0, 0.5);
+        }
+      
+        img {
+          opacity: 0.7;
+          position: absolute;
+          top: 10px;
+          left: 5px;
+      
+        }
+      }
+      
+      .header__cart {
+        display: flex;
+      
+        button {
+          height: 50px;
+          min-width: 150px;
+          padding: 12px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items:center;
+          background-color: #217a10;;
+          outline: none;
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          font-weight: 600;
+          font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
+          transition: all 0.3s;
+          &:hover {
+            background-color: #58b947;
+            color: white;
+            border: none ;
+          }
+
+          &:active {
+              transform: translateY(5px);
+          }
+        }
+      
+        &__price {
+          padding-right: 30px;
+        }
+      }
+    a {
+        text-decoration: none;
+    }
+
+}
