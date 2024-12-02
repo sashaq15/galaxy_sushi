@@ -1,18 +1,22 @@
 import logoSvg from '../../assets/logo.svg'
 import basketSvg from '../../assets/basket.svg';
-import searchSvg from '../../assets/search.svg'
 import { Link } from 'react-router-dom';
 import styles from './header.module.scss'
 import Search from '../Search';
+import { useSelector } from 'react-redux';
+import { cartSelector } from '../../redux/cartSlice';
+import Button from '../Buttons/Button';
 
 export interface ISearchProps {
-  searchValue: string;
+  searchValue: string | null;
   onChangeSearchValue: any;
   clearSearchValue: any;
 }
 
 
 const Header : React.FC<ISearchProps> = ({searchValue,onChangeSearchValue, clearSearchValue}) => {
+
+  const {totalPrice, totalItems} = useSelector(cartSelector);
   
     return (
        <div className={styles.root}>
@@ -30,11 +34,11 @@ const Header : React.FC<ISearchProps> = ({searchValue,onChangeSearchValue, clear
                 <Search searchValue = {searchValue} onChangeSearchValue = {onChangeSearchValue} clearSearchValue={clearSearchValue}/>
                 <div className={styles.header__cart}>
                   <Link to='/cart'>
-                    <button>
-                      <span className={styles.header__cart__price}>0$</span>
+                    <Button onClick={null} variant='header' >
+                      <span className={styles.header__cart__price}>{totalPrice.toFixed(1)} BYN</span>
                       <img src= {basketSvg} className={styles.header__cart__icon}></img>
-                      <span className={styles.header__cart__count} >12</span>
-                    </button>
+                      <span className={styles.header__cart__count} >{totalItems}</span>
+                    </Button>
                   </Link>
                 </div>
               </div>

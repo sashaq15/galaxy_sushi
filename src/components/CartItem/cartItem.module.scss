@@ -14,6 +14,7 @@
 
     .item__descr {
         display: block;
+        width: 200px;
     }
 
     .item__name {
@@ -38,7 +39,7 @@
     .item__count {
         display: flex;
         justify-content: space-between;
-        width: 110px;
+        width: 130px;
         font-weight: 800;
         align-items: center;
     }
@@ -79,6 +80,14 @@
             transform: translateY(5px);
         }
 
+    }
+
+    .totalPrice {
+        width: 140px;
+    }
+
+    .itemCount {
+        width: 100px;
     }
 
 

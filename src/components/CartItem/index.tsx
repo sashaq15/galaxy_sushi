@@ -1,29 +1,41 @@
-import styles from './cartItem.module.scss'
 
-const CartItem = () => {
+import { useDispatch } from 'react-redux';
+import {  addOneItem, deleteItem, deleteOneItem } from '../../redux/cartSlice';
+import { TSushiItem } from '../../redux/sushiSlice';
+import styles from './cartItem.module.scss'
+import Button from '../Buttons/Button';
+import ButtonRound from '../Buttons/ButtonRound';
+
+
+
+const CartItem: React.FC<TSushiItem> = ({...props}) => {
+
+    const { imageUrl, title, weight, price, count, id } = props;
+    const dispatch = useDispatch();
+
+
+
     return (
         <div className={styles.root}>
             <div className={styles.item__row}>
                 <div className={styles.item__block}>
-                    <img src="https://cdn.cleverone.tech/d/v6/Up/DHb5YEQv9ACZzSZhv3D3Dnm8DA30.jpg?w=300&h=300" alt="" className="item__icon" />
+                    <img src={imageUrl} alt="" className="item__icon" />
                     <div className={styles.item__descr}>
-                        <h2 className={styles.item__name}>Суши</h2>
-                        <p className={styles.item__weight}>25г</p>
+                        <h2 className={styles.item__name}>{title}</h2>
+                        <p className={styles.item__weight}>{weight}</p>
                     </div>
                 </div>
 
                 <div className={styles.item__count}>
-                    <button className={styles.count__btn}>-</button>
-                    <h2>3</h2>
-                    <button className={styles.count__btn}>+</button>
+                    <button  onClick={() => dispatch(deleteOneItem({...props}))} className={styles.count__btn} disabled= {count === 1 ? true: false}>-</button>
+                    <h2>{count}</h2>
+                    <button onClick={() => dispatch(addOneItem({...props}))} className={styles.count__btn}>+</button>
                 </div>
 
                 <div className="item__price">
-                    <h2>450</h2>
+                    <h2 className={styles.totalPrice}>{count? (price* count).toFixed(1) : null} BYN</h2>
                 </div>
-
-                <button className={styles.clear__item}>х</button>
-                
+                <ButtonRound  onClick={() => dispatch(deleteItem({...props}))} variant={'clear'} disabled={null}>x</ButtonRound>
             </div>
         </div>
     )

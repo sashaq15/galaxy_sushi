@@ -13,7 +13,7 @@
           padding-left: 40px;
           border: 1px solid rgba(0, 0, 0, 0.2);
           border-radius: 10px;
-          font-size: 14px;
+          font-size: 0.8rem;
           outline: none;
           transition: border-color 0.5s ease;
         }
@@ -29,28 +29,4 @@
       
         }
       }
-
-      .clear__item {
-        position: absolute;
-
-        right: 10px;
-        top: 7px;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        height:25px;
-        width: 25px;
-        border: none;
-        border-radius: 50%;
-        opacity: 0.9;
-        transition: all 0.3s;
-        &:hover {
-            opacity: 1.0;
-        }
-        &:active {
-            transform: translateY(5px);
-        }
-      
-
-}
 }

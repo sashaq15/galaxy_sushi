@@ -1,0 +1,10 @@
+.root {
+
+    li {
+        transition: all 0.5s;
+    }
+    li:hover {
+        transform: scale(1.05); 
+    }
+
+}

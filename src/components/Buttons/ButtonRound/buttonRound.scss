@@ -1,0 +1,82 @@
+.buttonRound {
+    border-radius:50%;
+    cursor: pointer;
+    font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
+    transition: all 0.3s;
+    &:active {
+        transform: translateY(5px);
+    }
+}
+
+    .buttonRound.count {
+        border: 1px solid #217a10 ;
+        height: 35px;
+        width: 35px;
+        background-color: #fff;
+        color: #217a10;
+        font-size: 20px;
+        &:hover {
+            color: white;
+            border: none ;
+            background-color: #58b947;
+        }
+    }
+
+    .buttonRound.clear {
+        height: 30px;
+        width: 30px;
+        border: none;
+        opacity: 0.5;
+        &:hover {
+            opacity: 1.0;
+        }
+    }
+
+    .buttonRound.clearSearch {
+        position: absolute;
+        right: 10px;
+        top: 7px;
+        padding-top: 3px;
+        display: flex;
+        justify-content: center;
+        height:25px;
+        width: 25px;
+        border: none;
+        opacity: 0.3;
+        &:hover {
+            opacity: 0.6;
+        }
+}
+
+    .buttonRound.closeModal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+            height: 30px;
+            width: 30px;
+            padding: 5px;
+            border: none;
+            opacity: 1.0;
+            &:hover {
+                background-color: rgba(0, 0, 0, .05);
+            }   
+        }
+
+        .buttonRound.closeIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            height: 30px;
+            width: 30px;
+            font-weight: 400;
+            padding: 20px;
+            border: none;
+            background-color: white;
+            &:hover {
+                background-color: rgba(0, 0, 0, .05);
+            }
+  
+        }

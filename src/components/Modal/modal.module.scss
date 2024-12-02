@@ -1,8 +1,17 @@
 .root {
-
+    font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
     .App {
         text-align: center;
     }
+
+
+    p {
+      opacity: 0.5;
+      font-size: 0.8rem;
+      margin-bottom: 30px;
+    }
+
+    
     .modalDiv {
         position: fixed;
         width: 100vw;
@@ -19,13 +28,88 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 350px;
-        height: 200px;
+        width:1000px;
+        height: 600px;
         background-color: white;
-        border-radius: 5px;
+        border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
         z-index: 1000; 
       }
-      
+
+      .modalContainer {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        
+      }
+
+      .modalImgWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-radius: 20px 0 0 20px;
+        background: linear-gradient(90deg, rgb(242, 244, 243) 11%, rgb(102, 105, 98) 89%);
+        height: 600px;
+        width: 100%;
+      }
+
+      .modalImg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 20px 0 0 20px;
+        z-index: 100;
+        width: 100%;
+        height: 600px;
+        object-fit: contain;
+      }
+
+      .modalDescr {
+        position: relative;
+        padding: 15px 20px 0px 20px;
+      }
+
+      .modalHeader {
+        display: flex;
+        justify-content: space-between;
+      }
+      .title {
+        margin: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+        font-weight: 800;
+        text-transform: uppercase;
+        text-align: start;
+      }
+
+      .modalFooter {
+        padding-top: 230px;
+      }
+
+      .footerTitle {
+        display: flex;
+        justify-content: space-between;
+        height: 45px;
+      }
+
+      .footerBtns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .item__count {
+        display: flex;
+        justify-content: space-between;
+        width: 110px;
+        font-weight: 800;
+        align-items: center;
+    }
+
+
+    
+
 }
   

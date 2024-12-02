@@ -1,5 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "./store"
+import axios from "axios"
+
+export enum status {
+  LOADING = 'loading',
+  SUCCSEC = 'succses',
+  ERROR = 'error'
+}
 
 export type TSushiItem = {
   id: string,
@@ -8,29 +15,38 @@ export type TSushiItem = {
   weight: string,
   price: number,
   category: number,
-  descr?: string
+  descr: string,
+  count?: number
 }
 
 export type ISushiSlice = {
   items : TSushiItem[] | null,
-  searchValue: string,
+  searchValue: string | null,
   categoriesId: number,
   currentPage: number,
-  isLoading: boolean
+  isLoading: boolean,
+  status: status
 
 }
 
 const initialState: ISushiSlice = {
   items: [],
-  searchValue: '',
+  searchValue: null,
   categoriesId: 0,
   currentPage: 1,
-  isLoading: false
+  isLoading: false,
+  status: status.LOADING
 
 }
 
-
-
+export const fetchSushi = createAsyncThunk ( 
+  'sushi/fetchSushi',
+  async (url: any, thunkApi) => {
+      const {data} = await axios.get(url);
+      return data;
+    
+  }
+)
 
 
 
@@ -52,17 +68,27 @@ export const sushiSlice = createSlice({
       },
       setCurrentPage: (state, action: PayloadAction<number>) => {
         state.currentPage = action.payload
-      },
-      setIsLoading:(state, action: PayloadAction<boolean>) => {
-        state.isLoading = action.payload
       }
 
+
+    },  extraReducers : (builder) =>  {
+      builder.addCase(fetchSushi.pending, (state) => {
+          state.status = status.LOADING;
+      }),
+
+      builder.addCase(fetchSushi.fulfilled, (state, action) => {
+          state.items = action.payload;
+          state.status = status.SUCCSEC
+      }),
+      builder.addCase(fetchSushi.rejected, (state) => {
+          state.status = status.ERROR
+      })
     }
   })
 
   export const sushiSelector = (state: RootState) => state.sushi
   
   // Action creators are generated for each case reducer function
-  export const {getSushi, setSearchValue, setCategoryId, setCurrentPage, setIsLoading, clearSearchValue } = sushiSlice.actions
+  export const {getSushi, setSearchValue, setCategoryId, setCurrentPage, clearSearchValue } = sushiSlice.actions
   export default sushiSlice.reducer
 

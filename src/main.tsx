@@ -5,6 +5,7 @@ import App from './App.js'
 import {store} from './redux/store'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
 
 
 const root = document.getElementById('root');

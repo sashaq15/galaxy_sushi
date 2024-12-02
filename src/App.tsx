@@ -21,9 +21,6 @@ function App() {
       document.body.classList.remove('no-scroll');
     };
   }, [background]);
- 
-
-
   return (
     <>
 
@@ -34,9 +31,11 @@ function App() {
           <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
 
-      {background && 
-     
-        <Route path="/modal/:id" element={<Modal/>}/>
+      {background &&  (
+     <Routes>
+        <Route path="/modal/:id"  element={<Modal/>}/> 
+     </Routes>
+       )
       }
 
 
