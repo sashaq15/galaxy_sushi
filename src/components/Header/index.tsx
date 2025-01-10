@@ -1,11 +1,15 @@
 import logoSvg from '../../assets/logo.svg'
+import loginSvg from '../../assets/login.svg'
 import basketSvg from '../../assets/basket.svg';
-import { Link } from 'react-router-dom';
+
+import { Link, useLocation } from 'react-router-dom';
 import styles from './header.module.scss'
 import Search from '../Search';
 import { useSelector } from 'react-redux';
-import { cartSelector } from '../../redux/cartSlice';
+import { cartSelector } from '../../redux/cart/slice';
 import Button from '../Buttons/Button';
+import { UserLogo } from '../User/UserLogo';
+import { getSession} from '../../storage/session';
 
 export interface ISearchProps {
   searchValue: string | null;
@@ -17,6 +21,9 @@ export interface ISearchProps {
 const Header : React.FC<ISearchProps> = ({searchValue,onChangeSearchValue, clearSearchValue}) => {
 
   const {totalPrice, totalItems} = useSelector(cartSelector);
+  const location = useLocation();
+
+  const authUserName = getSession().firstName;
   
     return (
        <div className={styles.root}>
@@ -40,6 +47,21 @@ const Header : React.FC<ISearchProps> = ({searchValue,onChangeSearchValue, clear
                       <span className={styles.header__cart__count} >{totalItems}</span>
                     </Button>
                   </Link>
+
+                  {authUserName ? 
+                    (<div className={styles.user__logo}>
+                      <UserLogo first_Name={authUserName}/>
+                    </div>)
+                     : 
+                    (
+                    <Link to='login' state={{ background: location }}>
+                      <Button onClick={null} variant='login'>
+                      Войти
+                        <img src={loginSvg} className={styles.header__cart__login} alt="" />
+                      </Button>
+                    </Link>
+                    )
+                  }
                 </div>
               </div>
 

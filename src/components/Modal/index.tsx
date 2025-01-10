@@ -1,44 +1,42 @@
 import {   useNavigate, useParams } from "react-router-dom";
 import styles from './modal.module.scss'
-import { TSushiItem } from "../../redux/sushiSlice";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { TSushiItem } from "../../redux/sushi/types";
+import { useDispatch, } from "react-redux";
 import { useEffect, useState } from "react";
-import { addItem} from "../../redux/cartSlice";
+import { addItem} from "../../redux/cart/slice";
 import Button from "../Buttons/Button";
 import ButtonRound from "../Buttons/ButtonRound";
+import { AppDispatch } from "../../redux/store";
+import { getSushiFromDBById } from "../../db/userData";
 
 
  const Modal:React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const dispatch = useDispatch();
-
-
-  const {id} = useParams();
+  const id = Number(useParams().id);
 
   const [item,setItem] = useState<TSushiItem>();
   const [count, setCount] = useState(1);
 
-
   useEffect(() => {
-    async function fetchItem() {
-      try {
-        const {data} = await axios.get('https://66a4c8165dc27a3c1909cbe1.mockapi.io/sushi/' + id)
-        setItem(data);
-      } catch {
-        alert('Упс:( такая суша не найдена');
-        navigate('/');
-      }
+    async function  fetchItem() {
+        console.log(id);
+        if(id) {
+          const  sushiData: any = await getSushiFromDBById(id)
+          setItem(sushiData)
+        }
     }
-    fetchItem()
+
+    fetchItem();
   }, [])
 
-  //@ts-ignore
+
   const onClickBtnBasket = () => {
-    //@ts-ignore
-    dispatch(addItem({...item , count})) 
-    navigate('/')
+    if(item) {
+      dispatch(addItem({...item , count})) 
+      navigate('/')
+    }
    }
   
   return (

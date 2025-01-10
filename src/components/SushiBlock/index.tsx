@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import basketSvg from '../../assets/basket.svg'
-import { TSushiItem } from '../../redux/sushiSlice';
+import { TSushiItem } from '../../redux/sushi/types';
 import styles from './sushiBlock.module.scss'
 
 const SushiBlock:React.FC<TSushiItem> = ({ 
@@ -9,8 +9,6 @@ const SushiBlock:React.FC<TSushiItem> = ({
   title,
   weight,
   price,
-  descr,
-  category,
   })  => {
 
     const location = useLocation();

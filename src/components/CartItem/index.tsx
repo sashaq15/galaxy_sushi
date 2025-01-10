@@ -1,9 +1,8 @@
 
 import { useDispatch } from 'react-redux';
-import {  addOneItem, deleteItem, deleteOneItem } from '../../redux/cartSlice';
-import { TSushiItem } from '../../redux/sushiSlice';
+import {  addOneItem, deleteItem, deleteOneItem } from '../../redux/cart/slice';
+import { TSushiItem } from '../../redux/sushi/types';
 import styles from './cartItem.module.scss'
-import Button from '../Buttons/Button';
 import ButtonRound from '../Buttons/ButtonRound';
 
 

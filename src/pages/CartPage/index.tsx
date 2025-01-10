@@ -3,30 +3,45 @@ import basketCart from '../../assets/basketCart.svg'
 import garbage from '../../assets/garbage.svg'
 import CartItem from "../../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { cartSelector, deleteAllItems } from "../../redux/cartSlice";
+import { cartSelector, deleteAllItems } from "../../redux/cart/slice";
 import { TSushiItem } from "../../redux/sushiSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Empty from "../../components/Empty";
 import Button from "../../components/Buttons/Button";
 import { caclTotalItems, caclTotalPrice } from "../../utils/caclTotal";
+import { getSession } from '../../storage/session';
+import { UserLogo } from '../../components/User/UserLogo';
 
 
 const CartPage = () => {
     const {itemsCart} = useSelector(cartSelector);
+    console.log(itemsCart);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const totalItems = caclTotalItems(itemsCart) || 0;
     const totalPrice = caclTotalPrice(itemsCart) || 0;
 
-    console.log(totalPrice);
+    const authUser = getSession();
 
+    const onClickPay = () => {
+        if(!authUser.accessToken) {
+            alert('Вы не авторизованы!')
+        }
+
+        alert('Заказ оплачен!')
+        navigate('/')
+    }
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>
-      
+
 
 
             <div className={styles.cart__content}>
+                <div className={styles.cart__logo}>
+                    {authUser.accessToken ? <UserLogo first_Name={authUser.firstName}/> : null }
+                </div>
             { (itemsCart === null || itemsCart.length) === 0 ? <Empty/> : (
                   <div className={styles.cart__container}> 
           
@@ -63,7 +78,7 @@ const CartPage = () => {
                       <Link to='/'>
                           <Button onClick={null} variant={"basket"}> Вернуться назад</Button>
                       </Link>
-                      <Button onClick={null} variant={"basket"}> Оплатить сейчас</Button>
+                      <Button onClick={onClickPay} variant={"basket"}> Оплатить сейчас</Button>
                   </div>
               </div>
             ) }    

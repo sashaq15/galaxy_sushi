@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import sushi from './sushiSlice'
-import cart from './cartSlice'
+import sushi from './sushi/slice'
+import cart from './cart/slice'
 
 
 
@@ -12,4 +12,5 @@ export const store =  configureStore({
 })
 
 export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch;
 

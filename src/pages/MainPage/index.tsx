@@ -4,25 +4,31 @@ import SushiBlock from '../../components/SushiBlock';
 import { useEffect, useRef} from 'react';
 import MyLoader from '../../components/MyLoader';
 import Pagination from '../../components/Pagination';
-import { fetchSushi, sushiSelector, TSushiItem } from '../../redux/sushiSlice';
+import { fetchSushiFirestore, sushiSelector } from '../../redux/sushi/slice';
+import {  TSushiItem } from '../../redux/sushi/types';
 
-import {  setCategoryId, setCurrentPage, setSearchValue, clearSearchValue} from '../../redux/sushiSlice';
+import {  setCategoryId, setCurrentPage, setSearchValue, clearSearchValue} from '../../redux/sushi/slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import qs from 'qs'
 import { useNavigate } from 'react-router';
 import CarouselGalaxy from '../../components/Carousel';
+import { AppDispatch } from '../../redux/store';
+
+
+
 
 const MainPage = () => {
 
     
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const {items,categoriesId, status, currentPage, searchValue} = useSelector(sushiSelector)
     const isMounted = useRef(false);
     const navigate = useNavigate();
 
 
+    const limitValue = 8;
 
     const onChangeCurrentPage = (e:any) => {
         dispatch(setCurrentPage(e))
@@ -40,22 +46,42 @@ const MainPage = () => {
       dispatch(setCategoryId(index))
     }
 
-    const search = searchValue ? `search=${searchValue}` : null;
-    const getSushi = () => {
+/*     const search = searchValue ? `search=${searchValue}` : null; */
+/*     const getSushi = () => {
         const mainUrl = `https://66a4c8165dc27a3c1909cbe1.mockapi.io/sushi?page=${currentPage}&limit=8&${search}`;
         const url = categoriesId > 0 ? `${mainUrl}&category=${categoriesId}` : mainUrl;
         //@ts-ignore
         dispatch(fetchSushi(url))
+    } */
+
+    const getSushiFirestore = () => {
+        const params = {
+            categoriesId,
+            currentPage,
+            limitValue,
+            searchValue
+        };
+        console.log(searchValue);
+        //@ts-ignore
+        dispatch(fetchSushiFirestore(params))
     }
 
     useEffect(() => {
+        getSushiFirestore()
+    }, [categoriesId, currentPage, searchValue])
+
+
+/*     useEffect(() => {
         getSushi();
-    }, [categoriesId, currentPage, searchValue]);
+    }, [categoriesId, currentPage, searchValue]); */
+
+
 
     useEffect(() => {
         if(isMounted.current) {
             let queryString;
-            if(search) {
+            //был search вместо searchValue
+            if(searchValue) {
                  queryString = qs.stringify( {
                     categoriesId,currentPage, searchValue
                 })
@@ -74,9 +100,11 @@ const MainPage = () => {
         dispatch(setCurrentPage(1))
     }, [categoriesId]);
 
+    const searchFilterValue = searchValue ? searchValue : '';
 
-    const sushi = items?.map((item:TSushiItem,index:number) =>  <SushiBlock {...item} key={index}/> )
+    const sushi = items?.filter((item: TSushiItem) => item.title.toLowerCase().includes(searchFilterValue.toLowerCase())).map((item:TSushiItem,index:number) =>  <SushiBlock {...item} key={index}/> )
     const arrMyLoader = [...new Array(8)].map((__,i) => <MyLoader key={i}/>)
+    console.log(sushi, searchFilterValue);
 
     return (
         
@@ -87,7 +115,6 @@ const MainPage = () => {
                     <Categories categoriesId={categoriesId} onChangeCategoryId={onChangeCategoryId}  />
          
                 <div className="content__bottom">
-                
                 <CarouselGalaxy/>
                     <div className="container">
                         
@@ -100,19 +127,11 @@ const MainPage = () => {
                             </ul>
                             
                     </div>
-                </div>        
+                </div>    
           </div>
-            { // display pagination ( item.length >= 8)
-            items?.length !== undefined && items?.length >= 8 && (
-            <Pagination currentPage={currentPage} onChangeCurrentPage ={onChangeCurrentPage}  />   
-            )
-            }
 
-            { // display pagination ( item.length < 8 && curentPage > 2)
-            (items?.length !== undefined && items?.length < 8 && currentPage > 1) && (
-            <Pagination currentPage={currentPage} onChangeCurrentPage ={onChangeCurrentPage}  />   
-            ) 
-            } 
+
+    <Pagination currentPage={currentPage} onChangeCurrentPage ={onChangeCurrentPage}  />   
 
 
           

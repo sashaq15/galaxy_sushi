@@ -3,13 +3,14 @@ import searchSvg from '../../assets/search.svg';
 import { ISearchProps } from '../Header';
 import styles from './Search.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue, sushiSelector } from '../../redux/sushiSlice';
+import { setSearchValue, sushiSelector } from '../../redux/sushi/slice';
 import debounce from 'debounce';
 import ButtonRound from '../Buttons/ButtonRound';
+import { AppDispatch } from '../../redux/store';
 
 const Search: React.FC<ISearchProps> = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const {categoriesId} = useSelector(sushiSelector)
 
@@ -19,7 +20,7 @@ const Search: React.FC<ISearchProps> = () => {
     const updateSearchValue = useCallback(
         debounce((str:string) => {
           dispatch(setSearchValue(str))
-        }, 1500), 
+        }, 500), 
         []
       ) 
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {

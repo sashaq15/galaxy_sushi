@@ -9,6 +9,7 @@
       }
 
       .cart__content {
+        position: relative;
         display: block;
         margin: 30px auto;
         width: 1400px;
@@ -19,7 +20,14 @@
       .cart__container {
         width: 80%;
         margin: 0 auto;
-        padding-top: 100px;
+        padding-top: 150px;
+      }
+
+      .cart__logo {
+        position: absolute;
+        right: 40px;
+        top: 30px;
+
       }
 
       .title {

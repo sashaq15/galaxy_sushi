@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 import styles from './Pagination.module.scss'
-import { useSelector } from 'react-redux';
-import { sushiSelector } from '../../redux/sushiSlice';
-import { useLocation, useParams } from 'react-router';
+
+import { useLocation } from 'react-router';
 import qs from 'qs';
 
 
@@ -22,10 +21,10 @@ export const Pagination: React.FC<TPagination> = ({currentPage, onChangeCurrentP
   let pageLimit = 3;
 
   switch(categoriesId) {
-    case 1:
     case 3:
       pageLimit = 2;
       break;
+    case 1:
     case 2:
     case 4:
     case 5:
@@ -37,8 +36,6 @@ export const Pagination: React.FC<TPagination> = ({currentPage, onChangeCurrentP
           pageLimit = 7;
           break;
   }
-
-
 
 
   return (

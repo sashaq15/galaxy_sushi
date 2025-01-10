@@ -27,6 +27,14 @@
     font-weight: 600;
   }
 
+  .button.login {
+    display: flex;
+    min-width: 110px;
+    text-align: center;
+    margin-left: 30px;
+    
+  }
+
   .button.basket {
     margin-left: 50px;
     margin-right: 50px;
@@ -44,7 +52,16 @@
     margin-top: 5%;
     margin-bottom: 5%;
     width: 40%;
+  }
 
+  .button.loginAuth {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
+    position: absolute;
+    bottom: -190px;
+    left: 10%;
   }
    
   .button:hover {

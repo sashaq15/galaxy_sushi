@@ -57,61 +57,25 @@
         }
       }
       
-      .header__search {
-        display: flex;
-        position: relative;
-        width: 360px;
-        list-style: none;
-        input {
-          width: 360px;
-          height: 36px;
-          opacity: 0.7;
-          padding-left: 40px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-          font-size: 1rem;
-          outline: none;
-          transition: border-color 0.5s ease;
-        }
-        input:focus {
-          border: 1px solid rgba(0, 0, 0, 0.5);
-        }
-        img {
-          opacity: 0.7;
-          position: absolute;
-          top: 10px;
-          left: 5px;
       
-        }
-      }
-      
-      .header__cart {
-        display: flex;
-        justify-content: space-between;
-        width: 350px;
-        align-items: center;
-        position: relative;
-        &__icon {
-          padding-right: 7px;
-        }
-        &__price {
-          padding-right: 30px;
-        }
-        &__login {
-          position: absolute;
-          color: white;
-          right: 15px;
-        }
-      }
-
-/*       .user__logo {
-        position: absolute;
-        right: -60px;
-        top: 5px;
-      } */
-
     a {
         text-decoration: none;
+    }
+
+    .roundIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: none;
+        font-size: 1.8rem;
+        border-radius: 50%;
+        background-color: #217a10;
+        text-align: center;
+        color:#fff;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-color: #58b947;
+        }
     }
 
 }
