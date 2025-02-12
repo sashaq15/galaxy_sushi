@@ -4,34 +4,50 @@ import garbage from '../../assets/garbage.svg'
 import CartItem from "../../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { cartSelector, deleteAllItems } from "../../redux/cart/slice";
-import { TSushiItem } from "../../redux/sushiSlice";
+import { TSushiItem } from "../../redux/sushi/types";
 import { Link, useNavigate } from "react-router-dom";
 import Empty from "../../components/Empty";
 import Button from "../../components/Buttons/Button";
-import { caclTotalItems, caclTotalPrice } from "../../utils/caclTotal";
+import { caclTotalItems, caclTotalPrice } from "../../utils/caclTotal.tsx";
 import { getSession } from '../../storage/session';
 import { UserLogo } from '../../components/User/UserLogo';
+import { formatDate } from '../../utils/formatDate';
+import { addUserOrdersToDB, getUserOrderFromDBById } from '../../db/userData';
+import { useEffect } from 'react';
+
+
 
 
 const CartPage = () => {
     const {itemsCart} = useSelector(cartSelector);
-    console.log(itemsCart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const totalItems = caclTotalItems(itemsCart) || 0;
     const totalPrice = caclTotalPrice(itemsCart) || 0;
 
     const authUser = getSession();
 
-    const onClickPay = () => {
+
+    const  onClickPay = async () => {
         if(!authUser.accessToken) {
             alert('Вы не авторизованы!')
         }
-
-        alert('Заказ оплачен!')
+        if(authUser.id) {
+        const date = formatDate(new Date());
+        const order:any = {
+        date: date,
+        items: itemsCart
+        }   
+        await addUserOrdersToDB(authUser.id, order)
+        dispatch(deleteAllItems())
+        alert('Спасибо!Ваш заказ оформлен!')
         navigate('/')
+        }
+
     }
+    
+
+
     return (
         <div className={styles.root}>
             <div className={styles.wrapper}>

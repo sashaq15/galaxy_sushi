@@ -21,7 +21,6 @@ import { getSushiFromDBById } from "../../db/userData";
 
   useEffect(() => {
     async function  fetchItem() {
-        console.log(id);
         if(id) {
           const  sushiData: any = await getSushiFromDBById(id)
           setItem(sushiData)

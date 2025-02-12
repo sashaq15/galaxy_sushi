@@ -3,6 +3,7 @@ import { RootState } from "../store"
 import { TSushiItem } from "../sushi/types"
 import { ICartSlice } from "./types"
 
+
 const initialState: ICartSlice = { 
     itemsCart : [],
     totalPrice: 0,

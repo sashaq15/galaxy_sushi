@@ -5,8 +5,9 @@ import ButtonRound from "../../components/Buttons/ButtonRound";
 import { useState } from "react";
 import Button from "../../components/Buttons/Button";
 import ErrorPopup from "./ErrorPopup";
-import { addUserToDB, createUser } from "../../firebase";
+import { createUser } from "../../firebase";
 import { startSession } from "../../storage/session";
+import { addUserToDB } from "../../db/userData";
 
  const RegistrationPage:React.FC = () => {
     const navigate = useNavigate();

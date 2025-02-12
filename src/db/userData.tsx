@@ -1,37 +1,35 @@
 import { db } from '../firebase'
-import { addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { addDoc, arrayUnion, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 
 
 export async function addUserToDB(email:string, firstName:string, id:string) {
   try {
-    const docRef = await addDoc(collection(db, 'users'), {
+    const docRef = doc(db, 'users', id)
+
+    await setDoc(docRef, {
       email: email,
       firstName: firstName,
       id: id
-    })
+    });
   } catch(e) {
-    console.error('Error adding document:', e)
+    console.error(`Error adding document with id: ${id}', ${e}`)
   }
 }
 
 export async function getUserFromDBById(id: string) {
   try {
-    const q = query(collection(db, "users"), where("id", "==", id));
-    const querySnapshot = await getDocs(q);
+    const docRef = doc(db, 'users', id);
+    const docSnap = await getDoc(docRef);
 
-    if (querySnapshot.empty) {
+    if (!docSnap.exists()) {
       console.log('Такого пользователя не существует');
       return null;
     }
 
-    const userData  =  querySnapshot.docs.map(doc => ({
-      ...doc.data() 
-    }));
-
-    return userData[0]; 
+    const userData = {...docSnap.data()}
+    return userData
   } catch (e) {
-    console.error('Ошибка при получении документа:', e);
-    return null; 
+    console.error('Ошибка при получении документа', e)
   }
 }
 
@@ -56,4 +54,38 @@ export async function getSushiFromDBById(id: number) {
   }
 }
 
+export async function addUserOrdersToDB( id:string, data: object) {
+  try {
+    const docRef = doc(db, 'orders', id)
+    const docSnap = await getDoc(docRef);
+    if(docSnap.exists()) {
+      await updateDoc(docRef, {
+        orders: arrayUnion(data)
+      })
+      } 
+  else {
+      await setDoc(docRef, {
+        orders: arrayUnion(data)
+      })
+      }
+  } catch(e) {
+    console.error(`Error adding document with id: ${id}', ${e}`)
+  }
+}
+
+export async function getUserOrderFromDBById(id: string) {
+  try {
+    const docRef = doc(db, 'orders', id);
+    const docSnap = await getDoc(docRef);
+
+    const userData = {...docSnap.data()}
+    const userDataArr = userData.orders.map((item:any) => ({
+      date: item.date,
+      items: item.items
+    }))
+    return userDataArr;
+  } catch (e) {
+    console.error('Ошибка при получении документа', e)
+  }
+}
 

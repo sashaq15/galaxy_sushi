@@ -61,8 +61,6 @@ const MainPage = () => {
             limitValue,
             searchValue
         };
-        console.log(searchValue);
-        //@ts-ignore
         dispatch(fetchSushiFirestore(params))
     }
 
@@ -104,7 +102,6 @@ const MainPage = () => {
 
     const sushi = items?.filter((item: TSushiItem) => item.title.toLowerCase().includes(searchFilterValue.toLowerCase())).map((item:TSushiItem,index:number) =>  <SushiBlock {...item} key={index}/> )
     const arrMyLoader = [...new Array(8)].map((__,i) => <MyLoader key={i}/>)
-    console.log(sushi, searchFilterValue);
 
     return (
         

@@ -10,6 +10,8 @@ import UserPage from './pages/Auth/UserPage/UserPage';
 import UserBlock from './components/User/UserBlock';
 import NotFoundBlock from './components/NotFoundBlock';
 import Account from './components/User/Account';
+import { Orders } from './components/User/Orders/Orders';
+import { Detalis } from './components/User/Orders/OrderDetalis';
 
 
 function App() {
@@ -36,7 +38,8 @@ function App() {
           <Route path='/cart' element={<CartPage/>}/>
           <Route path="/me" element={<UserPage/>}>
             <Route path="account" element={<Account/>}></Route>
-            <Route path="orders" element={<NotFoundBlock/>}></Route>
+            <Route path="orders" element={<Orders/>}></Route>
+            <Route path="orders/detalis" element={<Detalis/>}/>
           </Route>
           <Route path="/modal/:id" element={<Modal/>}/>
           <Route path='*' element={<MainPage/>}/>
