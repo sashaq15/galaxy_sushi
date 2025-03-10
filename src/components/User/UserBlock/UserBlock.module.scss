@@ -1,51 +1,50 @@
 .root {
-    font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
-    width: 320px;
-    height: 250px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 1.0rem;
+  font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
+  width: 320px;
+  height: 250px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+
+  .roundIcon {
+    margin: 0 auto;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+    font-size: 2.5rem;
     font-weight: 600;
+    border-radius: 50%;
+    background-color: #217a10;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+  }
 
-    .roundIcon {
-        margin: 0 auto;
-        width: 3.5rem;
-        height: 3.5rem;
-        border: none;
-        font-size: 2.5rem;
-        font-weight: 600;
-        border-radius: 50%;
-        background-color: #217a10;
-        text-align: center;
-        color:#fff;
-        margin-bottom: 20px;
-    }
+  .userName {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
 
-    .userName {
-       font-size: 1.5rem;
-       font-weight: 800;
+  .userTab {
+    padding: 10px;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      background-color: greenyellow;
     }
+    &:active {
+      background-color: black;
+    }
+  }
 
-    .userTab {
-        padding: 10px;
-        text-align: left;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s;
-        &:hover {
-            background-color: greenyellow;
-        }
-        &:active {
-            background-color: black;
-        }
-      
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }

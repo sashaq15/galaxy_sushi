@@ -1,73 +1,71 @@
 .button {
-    height: 50px;
-    min-width: 170px;
-    padding: 12px 20px;
-    background-color: #217a10;
-    outline: none;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: 800;
-    font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
-    transition: all 0.3s;
-    @media (max-width: 1200px) {
-      font-size: 0.8rem;
-      height: 40px;
-      min-width: 140px;
-  
-    }
+  height: 50px;
+  min-width: 170px;
+  padding: 12px 20px;
+  background-color: #217a10;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: "Nunito", Roboto, system-ui, Tahoma, sans-serif;
+  transition: all 0.3s;
+  @media (max-width: 1200px) {
+    font-size: 0.8rem;
+    height: 40px;
+    min-width: 140px;
   }
+}
 
-  .button.header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    font-weight: 600;
-  }
+.button.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
 
-  .button.login {
-    display: flex;
-    min-width: 110px;
-    text-align: center;
-    margin-left: 30px;
-    
-  }
+.button.login {
+  display: flex;
+  min-width: 110px;
+  text-align: center;
+  margin-left: 30px;
+}
 
-  .button.basket {
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-  }
+.button.basket {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
 
-  .button.modal {
-    width: 190px;
-    padding: 12px 20px;
-    border-radius: 10px;
-  }
+.button.modal {
+  width: 190px;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
 
-  .button.empty {
-    margin-left: 33%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 40%;
-  }
+.button.empty {
+  margin-left: 33%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 40%;
+}
 
-  .button.loginAuth {
-    width: 80%;
-    display: block;
-    margin: 0 auto;
-    font-size: 20px;
-    position: absolute;
-    bottom: -190px;
-    left: 10%;
-  }
-   
-  .button:hover {
-    background-color: #58b947;
-  }
+.button.loginAuth {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  font-size: 20px;
+  position: absolute;
+  bottom: -190px;
+  left: 10%;
+}
 
-  .button:active {
-    transform: translateY(5px);
-  }
+.button:hover {
+  background-color: #58b947;
+}
+
+.button:active {
+  transform: translateY(5px);
+}

@@ -1,73 +1,64 @@
 .root {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  .roundIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    font-size: 1.8rem;
+    border-radius: 50%;
+    background-color: #217a10;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      background-color: #58b947;
+    }
+  }
 
-    position: relative;
+  .dropdownMenu {
+    display: flex;
+    position: absolute;
+    z-index: 10000;
+    top: 47px;
+    right: -8px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    height: 180px;
+    line-height: 2.5rem;
+    background-color: #217a10;
+    opacity: 1;
+    border: none;
+    border-radius: 10px;
+    font-weight: 6500;
+    transition: all 0.9s;
     margin: 0;
     padding: 0;
-    .roundIcon {
-        width: 2.5rem;
-        height: 2.5rem;
-        border: none;
-        font-size: 1.8rem;
-        border-radius: 50%;
-        background-color: #217a10;
-        text-align: center;
-        color:#fff;
-        cursor: pointer;
-        transition: all 0.3s;
-        &:hover {
-            background-color: #58b947;
-        }
-    }
+  }
 
-    .dropdownMenu {
-        display: flex;
-        position: absolute;
-        z-index: 10000;
-        top: 47px;
-        right: -8px;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 300px;
-        height: 180px;
-        line-height: 2.5rem;
-        background-color: #217a10;
-        opacity: 1.0;
-        border: none;
-        border-radius: 10px;
-        font-weight:6500;
-        transition: all 0.9s;
-        margin: 0;
-        padding: 0;
-    }
+  a {
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
+  }
+  ul {
+    padding: 0px;
+    margin: 0px;
+    width: 90%;
+  }
 
-  
-    a {
-        list-style: none;
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.2rem;
-        font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
+  li {
+    width: 100%;
+    border-radius: 10px;
+  }
 
-      
-    }
-    ul{
-        padding: 0px;
-        margin: 0px;
-        width: 90%;
-    }
-
-    li{
-        width: 100%;
-        border-radius: 10px;
-    }
-
-
-    li:hover {
-        background-color: #58b947;
-
-
-    }
-    
-
+  li:hover {
+    background-color: #58b947;
+  }
 }

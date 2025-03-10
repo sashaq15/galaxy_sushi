@@ -1,20 +1,17 @@
 .root {
-       
-        h1 {
-        display: flex;
-        justify-content: center;
-        font-size: 3rem;
-        font-weight: bold;
-        margin: 200px;
-        margin-bottom: 400px;
-        }
+  h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 200px;
+    margin-bottom: 400px;
+  }
 
-        a {
-            display: block;
-            text-align: center;
-            list-style: none;
-            text-decoration: none;
-            
-        }
-
+  a {
+    display: block;
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+  }
 }

@@ -1,0 +1,85 @@
+.root {
+  * {
+    box-sizing: border-box;
+  }
+  .modalDiv {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(91, 112, 131, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
+  }
+  .modal {
+    position: relative;
+    width: 450px;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  form {
+    position: relative;
+    height: 40%;
+  }
+
+  h3 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+
+  .closeButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  input {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: 300;
+    padding-left: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    &:focus {
+      border: 2px solid rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  p {
+    text-align: center;
+    font-size: 18px;
+  }
+  a {
+    font-weight: 800;
+    text-decoration: none;
+    color: #217a10;
+  }
+
+  span {
+    font-weight: 800;
+    text-decoration: none;
+    color: #217a10;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: -85px;
+    left: 15px;
+  }
+}

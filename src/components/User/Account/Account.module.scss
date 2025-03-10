@@ -1,27 +1,27 @@
 .root {
-    font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
-    position: relative;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: white;
-    box-sizing:border-box;
-    width: 100%;
-    margin: 0px 30px 0px 30px;
-    height: 150px;
-    border: none;
-    border-radius:30px;
-    background:  url('https://naked-science.ru/wp-content/uploads/2016/04/article_AndromedaGalex_2048.jpg') center/cover no-repeat;
-    padding: 40px;
-    span {
-        font-weight: 900;
-        font-size: 2.0rem;
-        line-height: 2.5;
-        color: #217a10;
-    }
-    img {
-        position: absolute;
-        right: 40px;
-        bottom: 35px;
-    }
-
+  font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0px 30px 0px 30px;
+  height: 150px;
+  border: none;
+  border-radius: 30px;
+  background: url("https://naked-science.ru/wp-content/uploads/2016/04/article_AndromedaGalex_2048.jpg")
+    center/cover no-repeat;
+  padding: 40px;
+  span {
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 2.5;
+    color: #217a10;
+  }
+  img {
+    position: absolute;
+    right: 40px;
+    bottom: 35px;
+  }
 }

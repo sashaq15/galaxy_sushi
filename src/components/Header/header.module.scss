@@ -1,117 +1,114 @@
 .root {
-    .header {
-        padding: 0px 0;
-        background-color: #fff;
-        border-radius: 30px;
+  .header {
+    padding: 0px 0;
+    background-color: #fff;
+    border-radius: 30px;
+  }
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 760px) {
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    max-width: 100%;
+    @media (max-width: 760px) {
+      width: 100%;
+      img {
+        display: none;
       }
-      
-      .container {
-        width: 90%;
+    }
+    &__descr {
+      display: block;
+      padding-left: 20px;
+      width: 200%;
+      @media (max-width: 760px) {
+        width: 100%;
         margin: 0 auto;
+        text-align: center;
+        padding-left: 0px;
       }
-      
-      .header__content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @media(max-width: 760px) {
-          flex-wrap: wrap;
-          flex-direction: column;
-        }
+      &__title {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-weight: 800;
       }
-      
-      .header__logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: black;
-        max-width: 100%;
-        @media(max-width: 760px) {
-          width: 100%;
-          img {
-            display: none;
-          }
-        }
-        &__descr {
-          display: block;
-          padding-left: 20px;
-          width: 200%;
-          @media(max-width: 760px) {
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-            padding-left: 0px;
-          }
-          &__title {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            margin-bottom: 0;
-            font-weight: 800;
-          }
-          &__text {
-            margin-top: 0px;
-            font-size: 0.9rem;
-            opacity: 0.7; 
-          }
+      &__text {
+        margin-top: 0px;
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+    }
+  }
 
-        }
-      }
-      
-      .header__search {
-        display: flex;
-        position: relative;
-        width: 360px;
-        list-style: none;
-        input {
-          width: 360px;
-          height: 36px;
-          opacity: 0.7;
-          padding-left: 40px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-          font-size: 1rem;
-          outline: none;
-          transition: border-color 0.5s ease;
-        }
-        input:focus {
-          border: 1px solid rgba(0, 0, 0, 0.5);
-        }
-        img {
-          opacity: 0.7;
-          position: absolute;
-          top: 10px;
-          left: 5px;
-      
-        }
-      }
-      
-      .header__cart {
-        display: flex;
-        justify-content: space-between;
-        width: 350px;
-        align-items: center;
-        position: relative;
-        &__icon {
-          padding-right: 7px;
-        }
-        &__price {
-          padding-right: 30px;
-        }
-        &__login {
-          position: absolute;
-          color: white;
-          right: 15px;
-        }
-      }
+  .header__search {
+    display: flex;
+    position: relative;
+    width: 360px;
+    list-style: none;
+    input {
+      width: 360px;
+      height: 36px;
+      opacity: 0.7;
+      padding-left: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.5s ease;
+    }
+    input:focus {
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    img {
+      opacity: 0.7;
+      position: absolute;
+      top: 10px;
+      left: 5px;
+    }
+  }
 
-/*       .user__logo {
+  .header__cart {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    align-items: center;
+    position: relative;
+    &__icon {
+      padding-right: 7px;
+    }
+    &__price {
+      padding-right: 30px;
+    }
+    &__login {
+      position: absolute;
+      color: white;
+      right: 15px;
+    }
+  }
+
+  /*       .user__logo {
         position: absolute;
         right: -60px;
         top: 5px;
       } */
 
-    a {
-        text-decoration: none;
-    }
-
+  a {
+    text-decoration: none;
+  }
 }

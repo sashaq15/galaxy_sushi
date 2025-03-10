@@ -1,0 +1,1 @@
+export { OrderDetalis } from "./OrderDetalis"
