@@ -43,3 +43,15 @@ export async function getUserFromDBById(id: string) {
       console.error(`Error adding document with id: ${id}', ${e}`)
     }
   }
+
+  export async function changeUserFirstName(firstName:string, id: string ) {
+    try {
+      const docRef = doc(db, 'users', id)
+    
+      await updateDoc(docRef, {
+        firstName: firstName
+      })
+    } catch(e) {
+      console.error('Error change UserFirstName')
+    }
+  }

@@ -49,7 +49,7 @@ const CartPage = () => {
         <div className={styles.cart__content}>
           <div className={styles.cart__logo}>
             {authUser.accessToken ? (
-              <UserLogo first_Name={authUser.firstName} />
+              <UserLogo />
             ) : null}
           </div>
           {(itemsCart === null || itemsCart.length) === 0 ? (

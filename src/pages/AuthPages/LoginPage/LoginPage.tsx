@@ -45,9 +45,7 @@ const LoginPage: React.FC = () => {
       const firstName = await addUserDataFromDBToClient(loginResponse.user.uid)
       if (firstName) {
         userSessionStorage.startSession(
-          loginResponse.user,
-          loginResponse.user.uid,
-          firstName
+          loginResponse.user
         )
       }
       navigate("/me")

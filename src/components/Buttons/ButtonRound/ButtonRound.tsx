@@ -6,6 +6,7 @@ type TButtonRound = {
   onClick: any
   variant: string
   disabled: any
+  type?: "submit" | "reset";
 }
 
 const ButtonRound: React.FC<TButtonRound> = ({

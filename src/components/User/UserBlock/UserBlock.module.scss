@@ -47,4 +47,26 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .nameInput {
+    border: 2px solid green;
+    border-radius: 5px;
+    background: transparent;
+    color:black;
+    font-size: 1.0rem;
+    font-weight: 500;
+    height: 30px;
+    outline: none;
+    margin: 0px 0 24px 0;
+    width: 70%;
+  }
+
+  .divInput {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nameDiv {
+    cursor: pointer;
+  }
 }

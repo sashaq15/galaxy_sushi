@@ -1,8 +1,7 @@
-export const startSession = (user: any, id: string, firstName: string) => {
+export const startSession = (user: any) => {
   sessionStorage.setItem("email", user.email)
   sessionStorage.setItem("accessToken", user.accessToken)
   sessionStorage.setItem("id", user.uid)
-  sessionStorage.setItem("firstName", firstName)
 }
 
 export const getSession = () => {
@@ -10,7 +9,6 @@ export const getSession = () => {
     email: sessionStorage.getItem("email"),
     accessToken: sessionStorage.getItem("accessToken"),
     id: sessionStorage.getItem("id"),
-    firstName: sessionStorage.getItem("firstName")
   }
 }
 

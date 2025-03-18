@@ -3,7 +3,8 @@ import styles from "./headerUserPage.module.scss"
 import logoSvg from "@/assets/logo.svg"
 import { UserLogo } from "../UserLogo"
 
-const HeaderUserPage = ({ first_Name }: any) => {
+
+const HeaderUserPage = () => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
@@ -20,7 +21,7 @@ const HeaderUserPage = ({ first_Name }: any) => {
                 </p>
               </div>
             </Link>
-            <UserLogo first_Name={first_Name} />
+            <UserLogo/>
           </div>
         </div>
       </div>

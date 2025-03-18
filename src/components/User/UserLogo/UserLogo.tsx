@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import styles from "./userLogo.module.scss"
 import { DropdownMenu } from "../../DropdownMenu"
+import { useSelector } from "react-redux";
+import { userSelector } from "@/store/user/slice";
 
-const UserLogo = ({ first_Name }: any) => {
-  const firstName = first_Name
+const UserLogo = () => {
+  const { firstName} = useSelector(userSelector);
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
 
   const menuRef = useRef<HTMLDivElement>(null)

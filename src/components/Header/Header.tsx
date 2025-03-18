@@ -27,7 +27,7 @@ const Header: React.FC<ISearchProps> = ({
   const { totalPrice, totalItems } = useSelector(cartSelector)
   const location = useLocation()
 
-  const authUserName = userSessionStorage.getSession().firstName
+  const authUserName = userSessionStorage.getSession();
 
   return (
     <div className={styles.root}>
@@ -68,7 +68,7 @@ const Header: React.FC<ISearchProps> = ({
 
               {authUserName ? (
                 <div className={styles.user__logo}>
-                  <UserLogo first_Name={authUserName} />
+                  <UserLogo />
                 </div>
               ) : (
                 <Link to="login" state={{ background: location }}>

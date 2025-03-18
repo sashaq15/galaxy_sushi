@@ -66,7 +66,6 @@ const MainPage = () => {
   useEffect(() => {
     if (isMounted.current) {
       let queryString
-      //был search вместо searchValue
       if (searchValue) {
         queryString = qs.stringify({
           categoriesId,

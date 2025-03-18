@@ -40,8 +40,6 @@ const RegistrationPage: React.FC = () => {
       let registerResponse = await createUser(email, password)
       userSessionStorage.startSession(
         registerResponse.user,
-        registerResponse.user.uid,
-        firstName
       )
       addUserToDB(email, firstName, registerResponse.user.uid)
       navigate("/me")
