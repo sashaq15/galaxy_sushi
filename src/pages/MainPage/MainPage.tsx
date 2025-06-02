@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header"
 import { Categories, categories } from "@/components/Categories"
 import { SushiBlock } from "@/components/SushiBlock"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { MyLoader } from "@/components/MyLoader"
 import { Pagination } from "@/components/Pagination"
 import { fetchSushiFirestore, sushiSelector } from "@/store/sushi/slice"
@@ -19,15 +19,19 @@ import qs from "qs"
 import { useNavigate } from "react-router"
 import { CarouselGalaxy } from "@components/Carousel"
 import { AppDispatch } from "@/store/store"
+import { NotFoundBlock } from "@/components/NotFoundBlock"
+
 
 const MainPage = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { items, categoriesId, status, currentPage, searchValue } =
-    useSelector(sushiSelector)
+    useSelector(sushiSelector);
+  console.log(items);
   const isMounted = useRef(false)
   const navigate = useNavigate()
 
   const limitValue = 8
+
 
   const onChangeCurrentPage = (e: any) => {
     dispatch(setCurrentPage(e))
@@ -119,19 +123,19 @@ const MainPage = () => {
               {categories[categoriesId]}
             </h2>
             <ul className="content__bottom__items">
-              {status === "error" ? (
-                <div style={{ fontSize: "40px", textAlign: "center" }}>
-                  Упс, такого продукта не найдено !
-                </div>
-              ) : status === "loading" ? (
+              { status === "loading" ? (
                 arrMyLoader
-              ) : (
-                sushi
-              )}
+              ) : sushi?.length == 0 ? (
+                <div style={{ fontSize: "20px", textAlign: "center" }}>
+                Упс, такого продукта не найдено !
+              </div>
+              ) : sushi}
             </ul>
           </div>
         </div>
       </div>
+
+
 
       <Pagination
         currentPage={currentPage}

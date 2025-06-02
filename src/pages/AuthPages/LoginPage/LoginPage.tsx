@@ -7,14 +7,17 @@ import { ErrorPopup } from "@/components/ErrorPopup"
 import { signInUser } from "@/service/auth"
 import { userSessionStorage } from "@/service/userSessionStorage"
 import { getUserFromDBById } from "@/service/db-service"
+import { useDispatch } from "react-redux"
+import { openLogin } from "@/store/user/slice"
 
-const LoginPage: React.FC = () => {
+const LoginPage:  React.FC<{onClose: () => void}>=({onClose}) => {
   const navigate = useNavigate()
-  const location = useLocation()
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [error, setError] = useState<string>("")
+
 
   async function addUserDataFromDBToClient(userId: any) {
     const userData = await getUserFromDBById(userId)
@@ -55,6 +58,8 @@ const LoginPage: React.FC = () => {
     }
   }
 
+
+
   return (
     <div className={styles.root}>
       <div className={styles.modalDiv}>
@@ -62,7 +67,7 @@ const LoginPage: React.FC = () => {
           <h3>Войти</h3>
           <div className={styles.closeButton}>
             <ButtonRound
-              onClick={() => navigate(-1)}
+              onClick={onClose}
               variant={"closeIcon"}
               disabled={null}
             >
@@ -90,9 +95,8 @@ const LoginPage: React.FC = () => {
             />
             <p>
               У вас нету аккаунта?
-              <Link to="/registration" state={{ background: location }}>
-                <span>Зарегистрироваться</span>{" "}
-              </Link>
+                <span onClick ={ ()=> dispatch(openLogin(true))}>Зарегистрироваться</span>{" "}
+         
             </p>
             <Button onClick={undefined} variant={"loginAuth"}>
               Войти

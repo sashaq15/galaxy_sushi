@@ -8,6 +8,7 @@ import { LoginPage, RegistrationPage } from "@/pages/AuthPages"
 import { UserPage } from "@/pages/UserPage"
 import { Account } from "@/components/User/Account"
 import { Orders, OrderDetalis } from "@/components/Orders"
+import { NotFoundPage } from "./pages/NotFoundPage"
 
 function App() {
   const location = useLocation()
@@ -34,14 +35,12 @@ function App() {
           <Route path="orders/detalis" element={<OrderDetalis />} />
         </Route>
         <Route path="/modal/:id" element={<Modal />} />
-        <Route path="*" element={<MainPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       {background && (
         <Routes>
           <Route path="/modal/:id" element={<Modal />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
         </Routes>
       )}
     </>

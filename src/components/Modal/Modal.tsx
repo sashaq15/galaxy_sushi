@@ -9,6 +9,7 @@ import { Button, ButtonRound } from "../Buttons"
 import { getSushiFromDBById } from "@/service/db-service"
 
 import styles from "./modal.module.scss"
+import { AnimatePresence, motion } from "framer-motion"
 
 const Modal: React.FC = () => {
   const navigate = useNavigate()
@@ -39,8 +40,31 @@ const Modal: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.modalDiv}>
-        <div className={styles.modal}>
+      <motion.div className={styles.modalDiv}
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.3 }
+          }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.3 }
+          }}>
+        <motion.div className={styles.modal}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+              transition: {duration: 0.3}
+            }}
+            exit={{
+              opacity: 0.3,
+              transition: {duration: 0.3}
+            }}>
+        
           <div className={styles.modalContainer}>
             <div className={styles.modalImgWrapper}>
               <img className={styles.modalImg} src={item?.imageUrl} alt="" />
@@ -94,8 +118,8 @@ const Modal: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }

@@ -12,6 +12,10 @@ import { UserLogo } from "../User/UserLogo"
 import { userSessionStorage } from "@/service/userSessionStorage"
 
 import styles from "./header.module.scss"
+import { ModalPortal } from "../ModalPortal"
+import { LoginPage, RegistrationPage } from "@/pages/AuthPages"
+import { useState } from "react"
+import { userSelector } from "@/store/user/slice"
 
 export interface ISearchProps {
   searchValue: string | null
@@ -25,11 +29,14 @@ const Header: React.FC<ISearchProps> = ({
   clearSearchValue
 }) => {
   const { totalPrice, totalItems } = useSelector(cartSelector)
-  const location = useLocation()
+
+  const [isVisible, setIsVisible] = useState(false);
+  const {isLoginOpen} = useSelector(userSelector);
 
   const authUserName = userSessionStorage.getSession();
 
   return (
+    <>
     <div className={styles.root}>
       <div className={styles.header}>
         <div className={styles.container}>
@@ -66,13 +73,12 @@ const Header: React.FC<ISearchProps> = ({
                 </Button>
               </Link>
 
-              {authUserName ? (
+              {authUserName.id ? (
                 <div className={styles.user__logo}>
                   <UserLogo />
                 </div>
               ) : (
-                <Link to="login" state={{ background: location }}>
-                  <Button onClick={null} variant="login">
+                  <Button onClick={() =>setIsVisible(true)} variant="login">
                     Войти
                     <img
                       src={loginSvg}
@@ -80,13 +86,17 @@ const Header: React.FC<ISearchProps> = ({
                       alt=""
                     />
                   </Button>
-                </Link>
               )}
             </div>
           </div>
         </div>
       </div>
     </div>
+
+<ModalPortal isVisible={isVisible} onClose={() => setIsVisible(false) }>
+  {isLoginOpen ? <RegistrationPage onClose={() => setIsVisible(false) }/> : <LoginPage onClose={() => setIsVisible(false) }/>}
+</ModalPortal>
+</>
   )
 }
 

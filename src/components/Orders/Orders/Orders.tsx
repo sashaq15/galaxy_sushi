@@ -6,29 +6,34 @@ import { userSessionStorage } from "@/service/userSessionStorage"
 import { OrderBlock } from "../OrderBlock"
 
 import styles from "./Orders.module.scss"
+import { useDispatch, useSelector } from "react-redux"
+import { getUserOrders, orderSelector } from "@/store/order/slice"
 
 const Orders = () => {
-  const [data, setData] = useState<any>([])
-  const userAuth = userSessionStorage.getSession()
+  const dispatch = useDispatch();
+  const userAuth = userSessionStorage.getSession();
+  const { items } = useSelector(orderSelector)
 
   useEffect(() => {
     async function getOrders() {
       if (userAuth.id) {
         const orders: any = await getUserOrderFromDBById(userAuth.id)
-        setData(orders)
+        dispatch(getUserOrders({items: orders}))
       }
     }
     getOrders()
   }, [])
 
+
+
   return (
     <div className={styles.root}>
       <ul className="orders">
-        {data && data.length > 0 ? (
-          data.map((item: any, index: number) => (
+        {items && items.length > 0 ? (
+          items.map((item: any, index: number) => (
             <OrderBlock
-              order={data[index]}
-              key={data[index].date}
+              order={items[index]}
+              key={items[index].date}
               number={index + 1}
             />
           ))

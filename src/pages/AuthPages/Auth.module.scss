@@ -1,18 +1,11 @@
 .root {
   * {
     box-sizing: border-box;
-  }
-  .modalDiv {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    background-color: rgba(91, 112, 131, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: Nunito, Roboto, system-ui, Tahoma, sans-serif;
   }
+
+  //ЗАИНКА НА СТИЛЯХ!!!!!!!!!!!!!!
+
   .modal {
     position: relative;
     width: 450px;
@@ -81,5 +74,19 @@
     position: absolute;
     top: -85px;
     left: 15px;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.7;
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
   }
 }

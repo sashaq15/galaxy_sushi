@@ -7,8 +7,11 @@ import { ErrorPopup } from "@/components/ErrorPopup"
 import { createUser } from "@/service/auth"
 import { userSessionStorage } from "@/service/userSessionStorage"
 import { addUserToDB } from "@/service/db-service"
+import { useDispatch } from "react-redux"
+import { openLogin } from "@/store/user/slice"
+import { BsArrowLeftCircleFill } from "react-icons/bs"
 
-const RegistrationPage: React.FC = () => {
+const RegistrationPage: React.FC<{onClose: () => void}>=({onClose}) => {
   const navigate = useNavigate()
 
   const [email, setEmail] = useState<string>("")
@@ -17,6 +20,8 @@ const RegistrationPage: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("")
   const [error, setError] = useState<string>("")
 
+  const dispatch = useDispatch();
+  
   const onSubmit = async (event: any) => {
     event.preventDefault()
     if (!password || !email || !firstName) {
@@ -53,10 +58,14 @@ const RegistrationPage: React.FC = () => {
     <div className={styles.root}>
       <div className={styles.modalDiv}>
         <div className={styles.modal}>
+        <BsArrowLeftCircleFill
+        onClick ={ ()=> dispatch(openLogin(false))}
+        className={`${styles.arrow} ${styles.arrowLeft}`}
+      />
           <h3>Регистрация</h3>
           <div className={styles.closeButton}>
             <ButtonRound
-              onClick={() => navigate(-1)}
+              onClick={onClose}
               variant={"closeIcon"}
               disabled={null}
             >
@@ -97,10 +106,7 @@ const RegistrationPage: React.FC = () => {
               placeholder="Повторите пароль"
               onChange={(e) => setRepeatPassword(e.target.value)}
             />
-            <p>
-              У вас уже есть аккаунт?
-              <span onClick={() => navigate(-1)}> Войти</span>
-            </p>
+
             <Button onClick={undefined} variant={"loginAuth"}>
               Зарегистрироваться
             </Button>

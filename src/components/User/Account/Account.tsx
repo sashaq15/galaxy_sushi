@@ -3,6 +3,7 @@ import logoSvg from "@/assets/logoAccount.svg"
 import { useEffect, useState } from "react"
 import { userSessionStorage } from "@/service/userSessionStorage"
 import { getUserOrderFromDBById } from "@service/db-service"
+import { caclTotalPrice } from "@/utils/caclTotal"
 const Account = () => {
   const userAuth = userSessionStorage.getSession()
   const [data, setData] = useState<any>()
@@ -25,13 +26,15 @@ const Account = () => {
     }
   })
 
-  console.log(sum)
+
+
+
 
   return (
     <div className={styles.root}>
       Ваши баллы лояльности
       <br></br>
-      <span>{sum}</span>
+      <span>{sum.toFixed(1)}</span>
       <img src={logoSvg} alt="" />
     </div>
   )
