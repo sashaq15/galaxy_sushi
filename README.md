@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+# Galaxy Sushi 🍣✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Учебный проект:  "Планета Суши" для освоения фронтенд-разработки на React!
 
-Currently, two official plugins are available:
+## 🌟 Особенности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Просмотр меню:** Исследуйте суши-сеты, авторские роллы, закуски и многое другое! 🍱
+*   **Умная корзина:** Добавляйте понравившиеся позиции и управляйте заказом. 🛒
+*   **Поиск товаров:** Быстро находите нужные блюда через поисковую строку. 🔍
+*   **Личный кабинет:** 
+    *   Регистрация/авторизация через Firebase 👤
+    *   Просмотр истории заказов 📋
+    *   Изменение имени пользователя ✏️
+*   **Важно:** Это учебный проект — процесс оплаты специально пропущен 😉
 
-## Expanding the ESLint configuration
+## ⚙️ Технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*   **TypeScript** - основной язык для типизации и надежности кода 🛡️
+*   **React** (библиотека для UI)
+*   **SCSS & CSS Modules** (стилизация)
+*   **Redux Toolkit** (управление состоянием)
+*   **Firebase** (бэкенд-замена):
+    *   **Authentication** (вход/регистрация)
+    *   **Firestore** (база данных: товары, пользователи, история заказов)
+*   **Vite** (сборка проекта) ⚡
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Запуск проекта локально
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname
-  }
-}
-```
+1.  Склонируйте репозиторий:
+    ```bash
+    git clone https://github.com/sashaq15/galaxy_sushi.git
+    ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2.  Перейдите в папку проекта:
+    ```bash
+    cd galaxy_sushi
+    ```
+
+3.  Установите зависимости:
+    ```bash
+    npm install
+    ```
+
+4.  Запустите сервер для разработки:
+    ```bash
+    npm run dev
+    ```
+
+5.  Откройте в браузере: [http://localhost:5173](http://localhost:5173) (или другой порт, который укажет Vite)
